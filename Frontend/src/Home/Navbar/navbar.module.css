@@ -160,7 +160,8 @@ border: none;
     height: 45px;
     width: 90%;
     margin:  auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    margin-top: 10px;
 
 }
 .emojis{
