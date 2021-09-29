@@ -31,7 +31,9 @@
 .searchinput>input{
     width: 210px;
     height: 30px;
-    border: none;
+    /* border: none; */
+    outline: none;
+
     background-color:#f0f2f5;
 
 
@@ -106,3 +108,67 @@ border: none;
     width: 200px;
     margin-left: 30px;
 }
+.middlemenubar1{
+    height: 180px;
+}
+.middlemenubar2{
+    display: flex;
+    /* border:1px solid black; */
+}
+.postdiv{
+    display: flex;
+    width: 150px;
+    height: 30px;
+    /* border:  1px solid black; */
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    border-radius:8px ;
+    margin-left: 15px;
+    font-size: 13px;
+}
+.postdiv>p{
+    margin-top: 3px;
+    margin-left: 16px;
+}
+.postdiv:hover{
+         background-color: #e2e8ec;
+         cursor: pointer;
+}
+.zoom{
+    margin-left: 330px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.samecolor2{
+    color: gray;
+    margin-top: 5px;
+    margin-left: 10px;
+    
+}
+.postinputfieeld{
+    /* border: 1px solid black; */
+    margin-top: 3px;
+}
+.inputtextfield{
+    width: 90%;
+    height: 60px;
+    border: none;
+    outline: none;
+}
+.postitems{
+    display: flex;
+    height: 45px;
+    width: 90%;
+    margin:  auto;
+    border: 1px solid black;
+
+}
+.emojis{
+    margin: 20px;
+    margin-top: 8px;
+}
+.emojis1{
+    margin: 5px;
+    margin-top: 12px;
+}
+
