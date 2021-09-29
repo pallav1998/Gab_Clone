@@ -93,7 +93,7 @@ border: none;
     display: flex;
     gap: 20px;
     width: 80%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-left:50px ;
 }
 .container2child1icons{
@@ -101,4 +101,8 @@ border: none;
     /* gap:5px; */
     border: 50%;
     gap: 10px;
+}
+.menu{
+    width: 200px;
+    margin-left: 30px;
 }

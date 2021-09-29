@@ -14,18 +14,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 
-import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 // import Typography from '@mui/material/Typography';
-import ContentCut from '@mui/icons-material/ContentCut';
-import ContentCopy from '@mui/icons-material/ContentCopy';
-import ContentPaste from '@mui/icons-material/ContentPaste';
-import Cloud from '@mui/icons-material/Cloud';
+
+import ViewListTwoToneIcon from '@mui/icons-material/ViewListTwoTone';
+import AppsIcon from '@mui/icons-material/Apps';
 
 
 
@@ -204,13 +203,17 @@ size="medium">
 
 
 
-    <Paper  sx={{ width: 200 }}>
+    <div className={styles. menu} >
       <MenuList >
+      <ListItemText style={{marginRight:"120px",color:"gray"}}>
+          Menu
+          </ListItemText>
         <MenuItem >
+        
           <ListItemIcon  >
 
-            <HomeIcon />
-            <ListItemText style={{marginLeft:"20px",color:"black"}}>Home</ListItemText>
+            <HomeIcon  style={{ color:"#2d3436",}} />
+            <ListItemText style={{marginLeft:"15px",color:"#2d3436",}}>Home</ListItemText>
 
           </ListItemIcon>
           
@@ -218,32 +221,92 @@ size="medium">
 
         <MenuItem>
           <ListItemIcon>
-            <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            <ListItemText style={{marginLeft:"20px"}}>Notifications</ListItemText>
+            {/* <Badge color="error"> */}
+                <NotificationsIcon style={{color:"#2d3436",}} />
+              {/* </Badge> */}
 
           </ListItemIcon>
+          <ListItemText style={{marginRight:"66px",color:"#2d3436",}}>Notifications</ListItemText>
+
          
         </MenuItem>
 
         <MenuItem>
-          <ListItemIcon>
-            <ContentPaste fontSize="small" />
-            <ListItemText>Chats</ListItemText>
+          <ListItemIcon  >
+            
+          <i style={{color:"#2d3436",}} class="fas fa-comments"></i>  
+
           </ListItemIcon>
+          <ListItemText style={{marginRight:"100px",color:"#2d3436",}}>Chats</ListItemText>
+
           
+
         </MenuItem>
-        <Divider />
+
+
+
         <MenuItem>
           <ListItemIcon>
-            <Cloud fontSize="small" />
+          <GroupsIcon   style={{ color:"#2d3436",fontSize:"20px"}} />
+
           </ListItemIcon>
-          <ListItemText>Web Clipboard</ListItemText>
+          <ListItemText style={{marginRight:"100px"}}>Groups</ListItemText>
+        </MenuItem>
+
+
+        <MenuItem>
+          <ListItemIcon>
+
+          <ViewListTwoToneIcon   style={{ color:"#2d3436"}} />
+
+          </ListItemIcon>
+          <ListItemText style={{marginRight:"100px"}}>Lists</ListItemText>
+        </MenuItem>
+
+        <MenuItem>
+          <ListItemIcon>
+          <LanguageIcon  style={{ color:"#2d3436",}} />
+
+          </ListItemIcon>
+          <ListItemText style={{marginRight:"100px"}}>Explore</ListItemText>
+        </MenuItem>
+
+        <MenuItem>
+          <ListItemIcon>
+          <LanguageIcon   style={{ color:"#2d3436"}} />
+
+          </ListItemIcon>
+          <ListItemText style={{marginRight:"100px"}}>Pro Feed</ListItemText>
+        </MenuItem>
+
+
+        <MenuItem>
+          <ListItemIcon>
+          <DescriptionIcon  style={{ color:"#2d3436",fontSize:"20px"}} />
+
+          </ListItemIcon>
+          <ListItemText style={{marginRight:"100px"}}>News</ListItemText>
+        </MenuItem>
+
+
+        <MenuItem>
+          <ListItemIcon>
+          < MoreHorizIcon  style={{ color:"#2d3436",}} />
+
+          </ListItemIcon>
+          <ListItemText style={{marginRight:"100px"}}>More</ListItemText>
         </MenuItem>
       </MenuList>
-    </Paper>
-  );
+
+
+
+
+
+      
+
+
+    </div>
+
 
 
 </div>
