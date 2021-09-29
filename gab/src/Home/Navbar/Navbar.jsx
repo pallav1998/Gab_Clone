@@ -8,12 +8,25 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import MessageIcon from '@mui/icons-material/Message';
 import LightbulbRoundedIcon from '@mui/icons-material/LightbulbRounded';
 import PersonIcon from '@mui/icons-material/Person';
 
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
+
+import Divider from '@mui/material/Divider';
+import MenuList from '@mui/material/MenuList';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+// import Typography from '@mui/material/Typography';
+import ContentCut from '@mui/icons-material/ContentCut';
+import ContentCopy from '@mui/icons-material/ContentCopy';
+import ContentPaste from '@mui/icons-material/ContentPaste';
+import Cloud from '@mui/icons-material/Cloud';
+
 
 
 
@@ -112,7 +125,9 @@ size="medium"
   aria-label="show 6 new messages">
               <Badge badgeContent={5} color="error">
 
-<MessageIcon/>
+{/* <MessageIcon/> */}
+<i class="fas fa-comments"></i>  
+
 </Badge>
              </IconButton>
 
@@ -151,6 +166,127 @@ size="medium">
 </Paper>
 
 <div className={styles.container2}>
+  <div className={styles.leftmenubar}>
+    
+<div  className={styles.container2child1}>
+    
+<Typography  variant="h6">Home</Typography>
+
+<div className={styles.container2child1icons}>
+<IconButton  style={{border:"50%",background:"#f0f2f5"}}
+>
+      <LiveTvIcon  
+                
+   style={{  color:"#2d3436" }} />
+            </IconButton>
+
+   
+   <IconButton  style={{border:"50%",background:"#f0f2f5"}}
+>
+   <SearchIcon  />
+   </IconButton >
+
+
+   <IconButton  style={{border:"50%",background:"#f0f2f5"}}
+>
+<i class="fas fa-comments"></i>  
+  </IconButton>
+
+  </div>
+
+
+
+<div>
+
+</div>
+</div>
+<div>
+
+
+
+    <Paper  sx={{ width: 200 }}>
+      <MenuList >
+        <MenuItem >
+          <ListItemIcon  >
+
+            <HomeIcon />
+            <ListItemText style={{marginLeft:"20px",color:"black"}}>Home</ListItemText>
+
+          </ListItemIcon>
+          
+        </MenuItem>
+
+        <MenuItem>
+          <ListItemIcon>
+            <Badge badgeContent={17} color="error">
+                <NotificationsIcon />
+              </Badge>
+            <ListItemText style={{marginLeft:"20px"}}>Notifications</ListItemText>
+
+          </ListItemIcon>
+         
+        </MenuItem>
+
+        <MenuItem>
+          <ListItemIcon>
+            <ContentPaste fontSize="small" />
+            <ListItemText>Chats</ListItemText>
+          </ListItemIcon>
+          
+        </MenuItem>
+        <Divider />
+        <MenuItem>
+          <ListItemIcon>
+            <Cloud fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Web Clipboard</ListItemText>
+        </MenuItem>
+      </MenuList>
+    </Paper>
+  );
+
+
+</div>
+  </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <div  className={styles.middlemenubar}>
+
+  </div>
+  <div  className={styles.lastmenubar}>
+
+  </div>
 
 </div>
        
