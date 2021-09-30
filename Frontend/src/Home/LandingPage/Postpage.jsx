@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../Navbar/navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import Paper from "@mui/material/Paper";
 
@@ -18,10 +19,25 @@ import WarningIcon from "@mui/icons-material/Warning";
 
 import TimerIcon from "@mui/icons-material/Timer";
 import MediaCard from "./FirstPost";
-
+import axios from "axios"
+import FirstPost from "./FirstPost";
+import { fontSize } from "@mui/system";
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import FormatQuoteOutlinedIcon from '@mui/icons-material/FormatQuoteOutlined';
+import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
 const Postpage = () => {
   const [block,SetBlock]=useState("")
   const [block1,SetBlock1]=useState(false)
+    const[list,setList]=useState([])
+
+
+  useEffect(() => {
+   
+    getTodos();
+
+}, []);
+
 
 const handle=()=>{
 
@@ -37,9 +53,39 @@ const handle=()=>{
       SetBlock(e.target.value)
       handle()
 
-    
-
     }
+    const postData = () => {
+      const payload = {
+        title: block,
+      };
+      
+      axios
+        .post("http://localhost:3001/todos", payload)
+        .then(() => {
+            getTodos()
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  
+      SetBlock("");
+    };
+
+
+
+const getTodos = async () => {
+    
+  try {
+    const { data } = await axios.get("http://localhost:3001/todos");
+   console.log(data)
+    setList(data);
+  } catch (err) {
+  console.log(err);
+  }
+};
+
+
+
 
   return (
     <div>
@@ -71,7 +117,7 @@ const handle=()=>{
               className={styles.inputtextfield}
               onChange={handleChange}
               type="text"
-              
+              name="title"
               value={block}
               placeholder="What's on your mind?"
             />
@@ -96,23 +142,113 @@ const handle=()=>{
                   className={styles.iconsinputinsert}
                 />
                 <label htmlFor="">
-                  <input
+                  {/* <input
                     id="id1"
                     style={{ backgroundColor: "white" }}
                     className={styles.fileinput}
                     type="file"
-                  />
+                  /> */}
                 </label>
               </p>
             </div>
           </Paper>
 
          { block1&& <div >
-            <button className={styles.btnpost}>Post</button>
+            <button onClick={postData} className={styles.btnpost}>Post</button>
           </div>}
         </Paper>
         <div style={{ marginTop: "20px" }}>
-          <MediaCard />
+         
+          <FirstPost/>
+
+
+          {
+            list.map((items)=>{
+              return <>
+
+              <Paper className={styles.postuploadparent}  elevation={1}>
+                <div className={styles.postupload} >
+
+              {/* <div>{items.title}</div> */}
+                  
+                 
+<div className={styles.uploadprofile}>
+<IconButton  style={{border:"50%" ,background:"rgb(240,240,240)"}}
+size="medium">
+
+
+  <PersonIcon style={{fontSize: "36px"}} />
+  </IconButton>
+  
+</div>
+<div className={styles.profilename}>
+  <p>milind@123</p>
+
+  </div>
+  <div className={styles.moreoption}>
+<MoreHorizIcon/>
+  </div>
+
+  </div>
+  <div className={styles.postdata}>{items.title}</div>
+
+  <Paper elevation={1} className={styles.postitems1}>
+    
+    <div className={styles.icontext}>
+    <ThumbUpAltOutlinedIcon  style={{fontSize:"17px"}} className={styles.postitems1icons}  />
+<p>
+like
+</p>
+    </div>
+
+<div className={styles.icontext}>
+<ChatBubbleOutlineOutlinedIcon style={{fontSize:"17px"}}  className={styles.postitems1icons}  />
+          <p>
+          comment
+          </p>
+</div>
+
+   
+              
+
+<div className={styles.icontext}>
+<i style={{marginTop:"14px", fontSize:"17px"}} className={styles.postitems1icons} class="fas fa-undo"></i> 
+<p>
+repost
+
+</p>
+
+</div>
+
+<div className={styles.icontext}>
+<FormatQuoteOutlinedIcon  style={{fontSize:"17px"}} className={styles.postitems1icons} />
+  <p>
+  quptes
+  </p>
+
+
+</div>
+<div className={styles.icontext}>
+  
+<IosShareOutlinedIcon className={styles.postitems1icons} />
+<p >
+share
+
+</p>
+
+</div>
+ 
+ 
+</Paper>
+
+              </Paper>
+              </>
+
+
+
+
+            })
+          }
         </div>
       </div>
     </div>

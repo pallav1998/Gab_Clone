@@ -4,8 +4,7 @@ import Typography from '@mui/material/Typography';
 import styles from "../LandingPage/Firstpost.module.css"
 import CreateIcon from '@mui/icons-material/Create';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import Postupload from './Postupload';
-export default function MediaCard() {
+export default function FirstPost() {
   return (
     <>
     <div className={styles.cardparent} >
@@ -57,7 +56,7 @@ Complete your profile
 
     
     </div>
-    <Postupload/>
+  
     
 
     </>
