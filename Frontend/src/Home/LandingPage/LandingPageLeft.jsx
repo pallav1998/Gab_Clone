@@ -40,21 +40,21 @@ const LandingPage = () => {
 <IconButton  style={{border:"50%",background:"#f0f2f5"}}
 >
       <LiveTvIcon  
-                
-   style={{  color:"#2d3436" }} />
+                // e2e8ec
+   style={{  color:"black",background:"#e2e8ec",fontSize:"17px" }} />
             </IconButton>
 
    
    <IconButton  style={{border:"50%",background:"#f0f2f5"}}
 >
-   <SearchIcon  />
+   <SearchIcon  style={{  color:"black",background:"#e2e8ec",fontSize:"17px" }} /> 
    </IconButton >
 
 
    <IconButton  style={{border:"50%",background:"#f0f2f5"}}
 >
-<i class="fas fa-comments"></i>  
-  </IconButton>
+<i  style={{  color:"black",background:"#e2e8ec",fontSize:"17px" }}  class="fas fa-comments"></i>  
+  </IconButton >
 
   </div>
 
