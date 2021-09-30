@@ -109,7 +109,7 @@ border: none;
     margin-left: 30px;
 }
 .middlemenubar1{
-    height: auto;
+    height: 240px;
 }
 .middlemenubar2{
     display: flex;
@@ -200,9 +200,18 @@ border: none;
 }
 
 .btnpost{
-    width:100%;
-    height: 30px;
-    background-color: green;
+    width:90%;
+    height: 40px;
+    background-color:#21cf7a;
     margin-top: 20px;
+    border-radius: 5px ;
+    outline: none;
+    border: none;
+    color:  white;
+    padding: 1%;
+
+}
+.btnpost:hover{
+    background-color: #378e61;
 }
 

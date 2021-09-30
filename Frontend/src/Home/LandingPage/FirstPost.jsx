@@ -12,11 +12,11 @@ export default function MediaCard() {
       <div className={styles.loadcard1}>
       {/* <i style={{fontSize:"70px",position:"relative"}}  class="fas fa-spinner">          */}
 {/* </i> */}
-<CreateIcon className={styles.card1icon}  />
+<CreateIcon style={{color:"black",fontSize:"28px",marginTop:"32px"}} />
 
       </div>
       <CardContent>
-        <Typography   style={{fontSize:"15px",color:"#2d3436"}} gutterBottom variant="h5" component="div">
+        <Typography   style={{fontSize:"15px",color:"#2d3436",fontWeight:"550"}} gutterBottom variant="h5" component="div">
           Send your first post
         </Typography>
        
@@ -27,11 +27,11 @@ export default function MediaCard() {
       <div className={styles.loadcard1}>
       {/* <i style={{fontSize:"70px"}}  class="fas fa-spinner">         
 {/* </i> */}
-      <i style={{color:"black",fontSize:"20px",marginTop:"30px"}}class="fas fa-users"></i> 
+      <i style={{color:"black",fontSize:"20px",marginTop:"35px"}}class="fas fa-users"></i> 
 
       </div>
       <CardContent>
-        <Typography style={{fontSize:"15px",color:"#2d3436"}} gutterBottom variant="h5" component="div">
+        <Typography style={{fontSize:"15px",color:"#2d3436",fontWeight:"550"}} gutterBottom variant="h5" component="div">
         Follow Others
         </Typography>
        
@@ -46,7 +46,7 @@ export default function MediaCard() {
 {/* </i> */}
       </div>
       <CardContent>
-        <Typography style={{fontSize:"15px",color:"#2d3436"}} gutterBottom variant="h5" component="div">
+        <Typography style={{fontSize:"15px",color:"#2d3436",fontWeight:"550"}} gutterBottom variant="h5" component="div">
 Complete your profile
         </Typography>
        
