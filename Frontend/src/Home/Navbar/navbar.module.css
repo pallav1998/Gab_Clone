@@ -79,7 +79,7 @@ border: none;
 
 .container2{
     display:  grid;
-    grid-template-columns: 25% 45% 30% ;
+    grid-template-columns: 23% 48% 29% ;
     width: 100%;
     height: 1000px;
     background-color: #e2e8ec;
@@ -87,7 +87,7 @@ border: none;
 
 
 .leftmenubar,.middlemenubar,.lastmenubar{
-    /* border: 1px solid black; */
+    border: 1px solid black;
     margin-top: 20px;
 
 }
@@ -109,7 +109,7 @@ border: none;
     margin-left: 30px;
 }
 .middlemenubar1{
-    height: 180px;
+    height: auto;
 }
 .middlemenubar2{
     display: flex;
@@ -171,5 +171,38 @@ border: none;
 .emojis1{
     /* margin: 5px; */
     margin-top: 12px;
+}
+
+.iconsupdated{
+    width: 150px;
+    height: 40px;
+    border: 1px solid black;
+}
+.fileinput
+{
+    cursor: pointer;
+    display: none ;
+    visibility: none;
+    width:  200px;
+    /* margin-top: 5px; */
+    z-index: 5px;
+    border:none;
+    background-color: white;
+}
+
+
+.iconsinputinsert{
+   color:#63da9d ; 
+   font-size: 25px;
+   /* margin-left: 5px; */
+   position: absolute;
+   
+}
+
+.btnpost{
+    width:100%;
+    height: 30px;
+    background-color: green;
+    margin-top: 20px;
 }
 
