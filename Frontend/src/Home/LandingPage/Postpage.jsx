@@ -1,4 +1,4 @@
-import React,{useState,useRef} from "react";
+import React, { useState, useRef } from "react";
 import styles from "../Navbar/navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
@@ -20,22 +20,31 @@ import TimerIcon from "@mui/icons-material/Timer";
 import MediaCard from "./FirstPost";
 
 const Postpage = () => {
+  const [block,SetBlock]=useState("")
+  const [block1,SetBlock1]=useState(false)
 
-  const input1=useRef(null)
-  const addfun=()=>{
-    if(input1.current.style.display==="none"){
-      input1.current.style.display="block"
-    }
-    else{
-      input1.current.style.display="none"
+const handle=()=>{
 
-    }
+  if (block.length>0) {
+    SetBlock1(true)
+  } else {
+    SetBlock1(false)
+
   }
-  
+}
+ 
+    const handleChange=(e)=>{
+      SetBlock(e.target.value)
+      handle()
+
+    
+
+    }
+
   return (
     <div>
       <div className={styles.middlemenubar}>
-        <Paper elevation={2} className={styles.middlemenubar1}>
+        <Paper elevation={1} className={styles.middlemenubar1}>
           <div className={styles.middlemenubar2}>
             <div className={styles.samecolor2}>
               <IconButton
@@ -57,25 +66,15 @@ const Postpage = () => {
           </div>
           <Divider light />
 
-
-          <div ref={input1} className={styles.postinputfieeld}>
-            
+          <div  className={styles.postinputfieeld}>
             <input
               className={styles.inputtextfield}
-             onFocus={addfun}
+              onChange={handleChange}
               type="text"
               
-              
-              // onChange={handleSearch}
-
+              value={block}
               placeholder="What's on your mind?"
-          />
-
-
-
-
-
-
+            />
           </div>
 
           <Paper elevation={3} className={styles.postitems}>
@@ -92,22 +91,25 @@ const Postpage = () => {
 
             <div className={styles.iconsupdated}>
               <p className={styles.iconsinput}>
-                <InsertPhotoOutlinedIcon for="id1" className={styles.iconsinputinsert} />
+                <InsertPhotoOutlinedIcon
+                  for="id1"
+                  className={styles.iconsinputinsert}
+                />
                 <label htmlFor="">
-
-               <input id="id1" style={{backgroundColor:"white"}} className={styles.fileinput} type="file" />
-
+                  <input
+                    id="id1"
+                    style={{ backgroundColor: "white" }}
+                    className={styles.fileinput}
+                    type="file"
+                  />
                 </label>
-
               </p>
             </div>
           </Paper>
 
-
-<div ref={input1}>
-  <button className={styles.btnpost}>Post</button>
-</div>
-
+         { block1&& <div >
+            <button className={styles.btnpost}>Post</button>
+          </div>}
         </Paper>
         <div style={{ marginTop: "20px" }}>
           <MediaCard />
