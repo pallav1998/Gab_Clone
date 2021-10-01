@@ -11,8 +11,7 @@ export default function FirstPost() {
 
     <Card className={styles.card1} >
       <div className={styles.loadcard1}>
-      {/* <i style={{fontSize:"70px",position:"relative"}}  class="fas fa-spinner">          */}
-{/* </i> */}
+      
 <CreateIcon style={{color:"black",fontSize:"28px",marginTop:"32px"}} />
 
       </div>
@@ -26,8 +25,6 @@ export default function FirstPost() {
 
     <Card className={styles.card1} >
       <div className={styles.loadcard1}>
-      {/* <i style={{fontSize:"70px"}}  class="fas fa-spinner">         
-{/* </i> */}
       <i style={{color:"black",fontSize:"20px",marginTop:"35px"}}class="fas fa-users"></i> 
 
       </div>
@@ -41,10 +38,8 @@ export default function FirstPost() {
 
     <Card className={styles.card1} >
       <div className={styles.loadcard1}>
-      {/* <i style={{fontSize:"70px"}}  class="fas fa-spinner">          */}
       < InsertPhotoIcon style={{color:"black",marginTop:"32px",fontSize:"30px"}} />
 
-{/* </i> */}
       </div>
       <CardContent>
         <Typography style={{fontSize:"15px",color:"#2d3436",fontWeight:"550"}} gutterBottom variant="h5" component="div">

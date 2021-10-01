@@ -54,6 +54,13 @@ const handle=()=>{
       handle()
 
     }
+    const handleChangecomment=(e)=>{
+      SetBlock(e.target.value)
+      handle()
+
+
+    }
+
     const postData = () => {
       const payload = {
         title: block,
@@ -192,19 +199,19 @@ size="medium">
   </div>
   <div className={styles.postdata}>{items.title}</div>
 
-  <Paper elevation={1} className={styles.postitems1}>
+  <Paper elevation={0} className={styles.postitems1}>
     
     <div className={styles.icontext}>
-    <ThumbUpAltOutlinedIcon  style={{fontSize:"17px"}} className={styles.postitems1icons}  />
+    <ThumbUpAltOutlinedIcon  style={{fontSize:"17px",marginLeft:"20px"}} className={styles.postitems1icons}  />
 <p>
-like
+Like
 </p>
     </div>
 
 <div className={styles.icontext}>
 <ChatBubbleOutlineOutlinedIcon style={{fontSize:"17px"}}  className={styles.postitems1icons}  />
           <p>
-          comment
+          Comment
           </p>
 </div>
 
@@ -214,7 +221,7 @@ like
 <div className={styles.icontext}>
 <i style={{marginTop:"14px", fontSize:"17px"}} className={styles.postitems1icons} class="fas fa-undo"></i> 
 <p>
-repost
+Repost
 
 </p>
 
@@ -223,7 +230,7 @@ repost
 <div className={styles.icontext}>
 <FormatQuoteOutlinedIcon  style={{fontSize:"17px"}} className={styles.postitems1icons} />
   <p>
-  quptes
+  Quote
   </p>
 
 
@@ -232,7 +239,7 @@ repost
   
 <IosShareOutlinedIcon className={styles.postitems1icons} />
 <p >
-share
+Share
 
 </p>
 
@@ -240,6 +247,34 @@ share
  
  
 </Paper>
+<Divider/>
+
+<div className={styles.commentpost}>
+  <div>
+
+ < IconButton  style={{border:"50%" ,background:"rgb(240,240,240)",marginLeft:"15px"}}
+size="medium">
+<PersonIcon style={{fontSize: "20px"}} />
+  </IconButton>
+  </div>
+
+  <div  className={styles.commentinputdiv}>
+            <input
+              className={styles.commentinput}
+              onChange={handleChangecomment}
+              type="text"
+              name="title"
+              value={block}
+              placeholder="What's on your mind?"
+            />
+          </div>
+          { block1&& <div >
+            <button className={styles.postcomment}>Post</button>
+</div>
+          }
+
+
+</div>
 
               </Paper>
               </>
