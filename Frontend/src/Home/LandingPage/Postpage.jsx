@@ -26,10 +26,10 @@ import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
-import { BiText } from "react-icons/bi";
+// import { BiText } from "react-icons/bi";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-import Picker from "emoji-picker-react";
+// import Picker from "emoji-picker-react";
 import { Box } from "@mui/system";
 
 const Postpage = () => {
@@ -37,20 +37,20 @@ const Postpage = () => {
   const [block1, SetBlock1] = useState(false);
   const [list, setList] = useState([]);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const [anchorEl, setAnchorEl] = useState(null);
+  // const open = Boolean(anchorEl);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const [chosenEmoji, setChosenEmoji] = useState(null);
+  // const [chosenEmoji, setChosenEmoji] = useState(null);
 
-  const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject);
-  };
+  // const onEmojiClick = (event, emojiObject) => {
+  //   setChosenEmoji(emojiObject);
+  // };
 
   useEffect(() => {
     getTodos();
@@ -154,7 +154,7 @@ const Postpage = () => {
               style={{ color: "#f6b83c", fontSize: "20px" }}
             />
 
-            <div>
+            {/* <div>
               <Button
                 id="basic-button"
                 aria-controls="basic-menu"
@@ -195,7 +195,7 @@ const Postpage = () => {
                   </div>
                 </Box>
               </Menu>
-            </div>
+            </div> */}
 
             <PollOutlinedIcon
               className={styles.emojis}
@@ -216,14 +216,14 @@ const Postpage = () => {
             ></i>
             <TimerIcon className={styles.emojis} style={{ color: "#ee2c4d" }} />
 
-            <BiText
+            {/* <BiText
               style={{
                 color: "#227bef",
                 fontSize: "22px",
                 marginTop: "12px",
                 margin: "10px",
               }}
-            />
+            /> */}
           </Paper>
 
           {block1 && (
