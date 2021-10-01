@@ -29,10 +29,10 @@ const LandingPage = () => {
       <div className={styles.container2}>
         <div className={styles.leftmenubar}>
           <div className={styles.container2child1}>
-            <Typography variant="h6">Home</Typography>
+            <Typography style={{color:"#2d2f36",fontSize:"20px",fontWeight:"600"}} variant="h6">Home</Typography>
 
             <div className={styles.container2child1icons}>
-              <IconButton style={{ border: "50%", background: "#f0f2f5" }}>
+              <IconButton style={{ border: "50%", background: "#e2e8ec", }}>
                 <LiveTvIcon
                   // e2e8ec
                   style={{
@@ -43,7 +43,7 @@ const LandingPage = () => {
                 />
               </IconButton>
 
-              <IconButton style={{ border: "50%", background: "#f0f2f5" }}>
+              <IconButton style={{ border: "50%", background: "#e2e8ec" }}>
                 <SearchIcon
                   style={{
                     color: "black",
@@ -53,7 +53,7 @@ const LandingPage = () => {
                 />
               </IconButton>
 
-              <IconButton style={{ border: "50%", background: "#f0f2f5" }}>
+              <IconButton style={{ border: "50%", background: "#e2e8ec" }}>
                 <i
                   style={{
                     color: "black",
