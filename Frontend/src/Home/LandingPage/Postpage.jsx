@@ -26,10 +26,33 @@ import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import FormatQuoteOutlinedIcon from '@mui/icons-material/FormatQuoteOutlined';
 import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
+import { BiText } from 'react-icons/bi';
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import Picker from "emoji-picker-react";
+import { Box } from "@mui/system";
+
+
 const Postpage = () => {
   const [block,SetBlock]=useState("")
   const [block1,SetBlock1]=useState(false)
     const[list,setList]=useState([])
+
+
+    const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+  };
 
 
   useEffect(() => {
@@ -131,33 +154,78 @@ const getTodos = async () => {
           </div>
 
           <Paper elevation={3} className={styles.postitems}>
-            {/* <InsertPhotoOutlinedIcon  className={styles.emojis} style={{color:"#63da9d" ,fontSize:"25px"}} />
+            <input
+              type="file"
+              id="id1"
+              style={{ display: "none", visibility: "none" }}
+            />
+            <label htmlFor="id1">
+            
+              <InsertPhotoOutlinedIcon  className={styles.emojis} style={{color:"#63da9d" ,fontSize:"25px"}} />
+
+            </label>
+
+
 
     <EmojiEmotionsOutlinedIcon   className={styles.emojis1}  style={{color:"#f6b83c" ,fontSize:"20px"}}/>
+
+    <div>
+      <Button
+
+      
+        id="basic-button"
+        aria-controls="basic-menu"
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        
+      </Button>
+
+      <input
+              type="file"
+              id2="id2"
+              style={{ display: "none", visibility: "none" }}
+            />
+            <label htmlFor="id2">
+            
+              <EmojiEmotionsOutlinedIcon  className={styles.emojis} style={{color:"#63da9d" ,fontSize:"25px"}} />
+
+            </label>
+
+
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <Box>
+          <div>
+            {chosenEmoji ? (
+              <span>You chose: {chosenEmoji.emoji}</span>
+            ) : (
+              <span>No emoji Chosen</span>
+            )}
+            <Picker onEmojiClick={onEmojiClick} />
+          </div>
+        </Box>
+      </Menu>
+    </div>
+
+
  
  <PollOutlinedIcon className={styles.emojis} style={{color:"#f87e3a" }}/>
   <PublicOutlinedIcon className={styles.emojis} style={{color:"#35bba7" }}/>
   <WarningIcon  className={styles.emojis} style={{color:"#8c75c9" }}/>
 
 <i  style={{color:"red",marginTop:"12px",margin:"10px"}} class="fas fa-calendar-alt" ></i>
-<TimerIcon className={styles.emojis} style={{color:"#ee2c4d" }}/> */}
+<TimerIcon className={styles.emojis} style={{color:"#ee2c4d" }}/>
 
-            <div className={styles.iconsupdated}>
-              <p className={styles.iconsinput}>
-                <InsertPhotoOutlinedIcon
-                  for="id1"
-                  className={styles.iconsinputinsert}
-                />
-                <label htmlFor="">
-                  {/* <input
-                    id="id1"
-                    style={{ backgroundColor: "white" }}
-                    className={styles.fileinput}
-                    type="file"
-                  /> */}
-                </label>
-              </p>
-            </div>
+         <BiText  style={{color:"#227bef", fontSize:"22px",marginTop:"12px",margin:"10px"}}/>
           </Paper>
 
          { block1&& <div >
