@@ -3,11 +3,9 @@ import styles from "../Navbar/navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-
 import Paper from "@mui/material/Paper";
 
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
-
 import ZoomOutMapRoundedIcon from "@mui/icons-material/ZoomOutMapRounded";
 import Divider from "@mui/material/Divider";
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
@@ -29,7 +27,7 @@ import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 // import { BiText } from "react-icons/bi";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-// import Picker from "emoji-picker-react";
+import Picker from "emoji-picker-react";
 import { Box } from "@mui/system";
 import { NestedModal } from "./Deletepost";
 // import {NestedModal} from "./Deletepost"
@@ -38,8 +36,26 @@ const Postpage = () => {
   const [block, SetBlock] = useState("");
   const [block1, SetBlock1] = useState(false);
   const [list, setList] = useState([]);
+
   const [comment, SetComment] = useState("");
   const [commentblock, SetcommentBlock] = useState(false);
+
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+  };
+
 
   useEffect(() => {
     getTodos();
@@ -156,16 +172,49 @@ const Postpage = () => {
             <label htmlFor="id1">
               <InsertPhotoOutlinedIcon
                 className={styles.emojis}
-                style={{ color: "#63da9d", fontSize: "25px" }}
+                style={{ color: "#63da9d" }}
               />
             </label>
 
-            <EmojiEmotionsOutlinedIcon
-              className={styles.emojis1}
-              style={{ color: "#f6b83c", fontSize: "20px" }}
-            />
 
-          
+            <div>
+              <Button
+                // id="basic-button"
+                // aria-controls="basic-menu"
+                // aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <EmojiEmotionsOutlinedIcon
+                  className={styles.emojis1}
+                  style={{
+                    color: "#f6b83c",
+                    marginTop: "4px",
+                  }}
+                />
+              </Button>
+
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <Box>
+                  <div>
+                    {chosenEmoji ? (
+                      <span>You chose: {chosenEmoji.emoji}</span>
+                    ) : (
+                      <span>No emoji Chosen</span>
+                    )}
+                    <Picker onEmojiClick={onEmojiClick} />
+                  </div>
+                </Box>
+              </Menu>
+            </div>
 
             <PollOutlinedIcon
               className={styles.emojis}
