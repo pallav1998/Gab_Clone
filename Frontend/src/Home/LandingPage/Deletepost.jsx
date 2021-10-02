@@ -88,7 +88,7 @@ export  function NestedModal({handleDelete,handleEdit,data}) {
          <Button onClick={()=>handleDelete(data._id)} style={{height:"30px"}}> <DeleteIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",fontSize:"13px",fontWeight:"400", color:"black"}}>Delete</p> </Button> <br />
 
 
-          <Button onClick={()=>handleEdit(data.id)} style={{height:"30px"}}> <ModeEditIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",  fontSize:"13px",fontWeight:"400", color:"black"}}>Edit</p> </Button>
+          <Button onClick={()=>handleEdit(data._id)} style={{height:"30px"}}> <ModeEditIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",  fontSize:"13px",fontWeight:"400", color:"black"}}>Edit</p> </Button>
           <br />
 
           <ChildModal />

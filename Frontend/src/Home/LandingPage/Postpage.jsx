@@ -75,7 +75,7 @@ const Postpage = () => {
     const payload = {
       title:"aman",
       photo_url:"C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
-      user_id:"61575968081d229b6958889f",
+      user_id:"61587a562cf90b24831fd713",
       body: block 
     };
 
@@ -302,7 +302,7 @@ const Postpage = () => {
                         placeholder="What's on your mind?"
                       />
                     </div>
-                    {block1 && (
+                    {commentblock && (
                       <div>
                         <button className={styles.postcomment}>Post</button>
                       </div>
