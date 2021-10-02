@@ -38,7 +38,6 @@ router.get("/:id", async (req, res) => {
   try {
     const posts = await Post.findById(req.params.id)
       .populate("user_id")
-      .populate("tag_ids")
       .lean()
       .exec();
 
