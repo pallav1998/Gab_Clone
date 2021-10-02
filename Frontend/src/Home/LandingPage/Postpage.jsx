@@ -31,26 +31,14 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 // import Picker from "emoji-picker-react";
 import { Box } from "@mui/system";
+import ChildModal from "./Deletepost";
 
 const Postpage = () => {
   const [block, SetBlock] = useState("");
   const [block1, SetBlock1] = useState(false);
   const [list, setList] = useState([]);
-
-  // const [anchorEl, setAnchorEl] = useState(null);
-  // const open = Boolean(anchorEl);
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // const [chosenEmoji, setChosenEmoji] = useState(null);
-
-  // const onEmojiClick = (event, emojiObject) => {
-  //   setChosenEmoji(emojiObject);
-  // };
+  const [comment, SetComment] = useState("");
+  const [commentblock, SetcommentBlock] = useState(false);
 
   useEffect(() => {
     getTodos();
@@ -68,18 +56,30 @@ const Postpage = () => {
     SetBlock(e.target.value);
     handle();
   };
+
+  const handle1=()=>{
+    if (comment.length > 0) {
+      SetcommentBlock(true);
+    } else {
+    SetcommentBlock(false);
+    }
+  }
+
   const handleChangecomment = (e) => {
-    SetBlock(e.target.value);
-    handle();
+    SetComment(e.target.value);
+    handle1();
   };
 
   const postData = () => {
     const payload = {
-      title: block,
+      title:"aman",
+      photo_url:"C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
+      user_id:"61575968081d229b6958889f",
+      body: block 
     };
 
     axios
-      .post("http://localhost:3001/todos", payload)
+      .post("http://localhost:8000/posts", payload)
       .then(() => {
         getTodos();
       })
@@ -92,9 +92,9 @@ const Postpage = () => {
 
   const getTodos = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3001/todos");
-      console.log(data);
-      setList(data);
+      const { data } = await axios.get("http://localhost:8000/posts");
+      console.log("user=",data.posts.user_id);
+      setList(data.posts);
     } catch (err) {
       console.log(err);
     }
@@ -154,48 +154,7 @@ const Postpage = () => {
               style={{ color: "#f6b83c", fontSize: "20px" }}
             />
 
-            {/* <div>
-              <Button
-                id="basic-button"
-                aria-controls="basic-menu"
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-              ></Button>
-
-              <input
-                type="file"
-                id2="id2"
-                style={{ display: "none", visibility: "none" }}
-              />
-              <label htmlFor="id2">
-                <EmojiEmotionsOutlinedIcon
-                  className={styles.emojis}
-                  style={{ color: "#63da9d", fontSize: "25px" }}
-                />
-              </label>
-
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Box>
-                  <div>
-                    {chosenEmoji ? (
-                      <span>You chose: {chosenEmoji.emoji}</span>
-                    ) : (
-                      <span>No emoji Chosen</span>
-                    )}
-                    <Picker onEmojiClick={onEmojiClick} />
-                  </div>
-                </Box>
-              </Menu>
-            </div> */}
+          
 
             <PollOutlinedIcon
               className={styles.emojis}
@@ -216,14 +175,7 @@ const Postpage = () => {
             ></i>
             <TimerIcon className={styles.emojis} style={{ color: "#ee2c4d" }} />
 
-            {/* <BiText
-              style={{
-                color: "#227bef",
-                fontSize: "22px",
-                marginTop: "12px",
-                margin: "10px",
-              }}
-            /> */}
+           
           </Paper>
 
           {block1 && (
@@ -237,12 +189,11 @@ const Postpage = () => {
         <div style={{ marginTop: "20px" }}>
           <FirstPost />
 
-          {list.map((items) => {
+          {list && list.map((items) => {
             return (
               <>
                 <Paper className={styles.postuploadparent} elevation={1}>
                   <div className={styles.postupload}>
-                    {/* <div>{items.title}</div> */}
 
                     <div className={styles.uploadprofile}>
                       <IconButton
@@ -256,13 +207,20 @@ const Postpage = () => {
                       </IconButton>
                     </div>
                     <div className={styles.profilename}>
-                      <p>milind@123</p>
+                      
+                      <p>{`${items.user_id.first_name}`}</p>
+                      
+                     
                     </div>
+                    
                     <div className={styles.moreoption}>
-                      <MoreHorizIcon />
+                    
+                      <ChildModal />
+
                     </div>
                   </div>
-                  <div className={styles.postdata}>{items.title}</div>
+                  <div className={styles.postdata}>{items.body}</div>
+                  {/* post */}
 
                   <Paper elevation={0} className={styles.postitems1}>
                     <div className={styles.icontext}>
@@ -326,7 +284,7 @@ const Postpage = () => {
                         onChange={handleChangecomment}
                         type="text"
                         name="title"
-                        value={block}
+                        value={comment}
                         placeholder="What's on your mind?"
                       />
                     </div>

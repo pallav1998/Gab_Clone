@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   try {
     const posts = await Post.find()
       .populate("user_id")
-      .populate("tag_ids")
+      // .populate("tag_ids")
       .lean()
       .exec(); // lean is convert object to json data and find is not returning the proper promis so to convert it to proper promise we use exec()
     res.status(200).send({ posts });

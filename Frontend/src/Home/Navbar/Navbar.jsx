@@ -18,7 +18,7 @@ import LandingPage from "../LandingPage/LandingPageLeft";
 const Navbar = () => {
   return (
     <>
-      <Paper elevation={1}>
+      <Paper className={styles.navfixed} elevation={3}>
         <div className={styles.Container}>
           <div className={styles.logo}>
             <img
