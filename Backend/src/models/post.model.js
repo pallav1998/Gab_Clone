@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 //post model
 const postSchema = new mongoose.Schema(
   {
+    photo_url: [{ type: String, required: false }],
     title: { type: String, required: true },
     body: { type: String, required: true },
     user_id: {

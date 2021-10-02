@@ -1,8 +1,6 @@
 const express = require("express");
 const Comment = require("../models/comment.model");
-
 const CRUDController = require("./CRUD.controller");
-
 const router = express.Router();
 
 //create comments
