@@ -31,7 +31,8 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 // import Picker from "emoji-picker-react";
 import { Box } from "@mui/system";
-import ChildModal from "./Deletepost";
+import { NestedModal } from "./Deletepost";
+// import {NestedModal} from "./Deletepost"
 
 const Postpage = () => {
   const [block, SetBlock] = useState("");
@@ -90,15 +91,25 @@ const Postpage = () => {
     SetBlock("");
   };
 
-  const getTodos = async () => {
+   const getTodos = async () => {
     try {
       const { data } = await axios.get("http://localhost:8000/posts");
-      console.log("user=",data.posts.user_id);
+      console.log("user=",data.posts);
       setList(data.posts);
     } catch (err) {
       console.log(err);
     }
   };
+
+
+  const handleDelete =async(_id) => {
+  await   axios.delete(`http://localhost:8000/posts/${_id}`)
+  getTodos()
+}
+
+
+
+
 
   return (
     <div>
@@ -190,8 +201,9 @@ const Postpage = () => {
           <FirstPost />
 
           {list && list.map((items) => {
+            console.log(list)
             return (
-              <>
+              <> 
                 <Paper className={styles.postuploadparent} elevation={1}>
                   <div className={styles.postupload}>
 
@@ -208,14 +220,16 @@ const Postpage = () => {
                     </div>
                     <div className={styles.profilename}>
                       
-                      <p>{`${items.user_id.first_name}`}</p>
+                      <p>{`${items.user_id?.first_name}`}</p>
                       
                      
                     </div>
                     
                     <div className={styles.moreoption}>
-                    
-                      <ChildModal />
+                    <NestedModal data={items} handleDelete={handleDelete} />
+                      {/* <ChildModal /> */}
+                      {/* <Button onClick={()=>handleDelete(items._id)} style={{height:"30px"}}>Delete </Button> <br /> */}
+
 
                     </div>
                   </div>

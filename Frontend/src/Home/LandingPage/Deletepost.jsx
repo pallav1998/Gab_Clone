@@ -25,7 +25,7 @@ const style = {
   pb: 3,
 };
 
-function ChildModal() {
+export default function ChildModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -58,24 +58,9 @@ function ChildModal() {
   );
 }
 
-  const handleDelete = async () => {
-    // try {
-    //   const { data } = await axios.delete("http://localhost:8000/posts");
-    //   console.log("user=",data.posts.user_id);
-    //   setList(data.posts);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  };
+ ;
 
-
-
-
-const handleEdit=()=>{
-
-}
-
-export default function NestedModal() {
+export  function NestedModal({handleDelete,handleEdit,data}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -90,8 +75,7 @@ export default function NestedModal() {
       <Modal
         open={open}
         onClose={handleClose}
-        // aria-labelledby="parent-modal-title"
-        // aria-describedby="parent-modal-description"
+        
       >
         <Box   sx={{ ...style, width: 200,borderRadius:2 }}>
           {/* <h2 id="parent-modal-title">Text in a modal</h2> */}
@@ -101,10 +85,10 @@ export default function NestedModal() {
           </div>
           <Button style={{ height:"30px"}}> <PushPinIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{margin:"5px",fontSize:"13px",fontWeight:"400", color:"black"}}>Pin on Profile</p> </Button>
 
-         <Button onClick={handleDelete} style={{height:"30px"}}> <DeleteIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",fontSize:"13px",fontWeight:"400", color:"black"}}>Delete</p> </Button> <br />
+         <Button onClick={()=>handleDelete(data._id)} style={{height:"30px"}}> <DeleteIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",fontSize:"13px",fontWeight:"400", color:"black"}}>Delete</p> </Button> <br />
 
 
-          <Button onClick={handleEdit} style={{height:"30px"}}> <ModeEditIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",  fontSize:"13px",fontWeight:"400", color:"black"}}>Edit</p> </Button>
+          <Button onClick={()=>handleEdit(data.id)} style={{height:"30px"}}> <ModeEditIcon style={{color:"#2d3436",fontSize:"15px"}}/> <p style={{ margin:"5px",  fontSize:"13px",fontWeight:"400", color:"black"}}>Edit</p> </Button>
           <br />
 
           <ChildModal />
