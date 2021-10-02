@@ -19,6 +19,23 @@ import LandingPage from "../LandingPage/LandingPageLeft";
 const Navbar = () => {
   return (
     <>
+
+//       <Paper className={styles.navfixed} elevation={3}>
+//         <div className={styles.Container}>
+//           <div className={styles.logo}>
+//             <img
+//               style={{ marginTop: "-7px" }}
+//               height="58px"
+//               src="https://apps.gab.com/img/gab-logo.png"
+//               alt=""
+//             />
+//           </div>
+//           <div className={styles.search}>
+//             <div className={styles.searchinput}>
+//               <input
+//                 type="text"
+//                 placeholder="Search for people or group on Gab"
+
       <AppBar position="static">
         <Paper elevation={1}>
           <div className={styles.Container}>
@@ -28,6 +45,7 @@ const Navbar = () => {
                 height="58px"
                 src="https://apps.gab.com/img/gab-logo.png"
                 alt=""
+
               />
             </div>
             <div className={styles.search}>

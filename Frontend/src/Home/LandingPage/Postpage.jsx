@@ -29,11 +29,17 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import Picker from "emoji-picker-react";
 import { Box } from "@mui/system";
+import { NestedModal } from "./Deletepost";
+// import {NestedModal} from "./Deletepost"
 
 const Postpage = () => {
   const [block, SetBlock] = useState("");
   const [block1, SetBlock1] = useState(false);
   const [list, setList] = useState([]);
+
+  const [comment, SetComment] = useState("");
+  const [commentblock, SetcommentBlock] = useState(false);
+
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -49,6 +55,7 @@ const Postpage = () => {
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
+
 
   useEffect(() => {
     getTodos();
@@ -66,18 +73,30 @@ const Postpage = () => {
     SetBlock(e.target.value);
     handle();
   };
+
+  const handle1=()=>{
+    if (comment.length > 0) {
+      SetcommentBlock(true);
+    } else {
+    SetcommentBlock(false);
+    }
+  }
+
   const handleChangecomment = (e) => {
-    SetBlock(e.target.value);
-    handle();
+    SetComment(e.target.value);
+    handle1();
   };
 
   const postData = () => {
     const payload = {
-      title: block,
+      title:"aman",
+      photo_url:"C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
+      user_id:"61587a562cf90b24831fd713",
+      body: block 
     };
 
     axios
-      .post("http://localhost:3001/todos", payload)
+      .post("http://localhost:8000/posts", payload)
       .then(() => {
         getTodos();
       })
@@ -88,15 +107,25 @@ const Postpage = () => {
     SetBlock("");
   };
 
-  const getTodos = async () => {
+   const getTodos = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3001/todos");
-      console.log(data);
-      setList(data);
+      const { data } = await axios.get("http://localhost:8000/posts");
+      console.log("user=",data.posts);
+      setList(data.posts);
     } catch (err) {
       console.log(err);
     }
   };
+
+
+  const handleDelete =async(_id) => {
+  await   axios.delete(`http://localhost:8000/posts/${_id}`)
+  getTodos()
+}
+
+
+
+
 
   return (
     <div>
@@ -146,6 +175,7 @@ const Postpage = () => {
                 style={{ color: "#63da9d" }}
               />
             </label>
+
 
             <div>
               <Button
@@ -205,14 +235,7 @@ const Postpage = () => {
             ></i>
             <TimerIcon className={styles.emojis} style={{ color: "#ee2c4d" }} />
 
-            {/* <BiText
-              style={{
-                color: "#227bef",
-                fontSize: "22px",
-                marginTop: "12px",
-                margin: "10px",
-              }}
-            /> */}
+           
           </Paper>
 
           {block1 && (
@@ -226,12 +249,12 @@ const Postpage = () => {
         <div style={{ marginTop: "20px" }}>
           <FirstPost />
 
-          {list.map((items) => {
+          {list && list.map((items) => {
+            console.log(list)
             return (
-              <>
+              <> 
                 <Paper className={styles.postuploadparent} elevation={1}>
                   <div className={styles.postupload}>
-                    {/* <div>{items.title}</div> */}
 
                     <div className={styles.uploadprofile}>
                       <IconButton
@@ -245,13 +268,22 @@ const Postpage = () => {
                       </IconButton>
                     </div>
                     <div className={styles.profilename}>
-                      <p>milind@123</p>
+                      
+                      <p>{`${items.user_id?.first_name}`}</p>
+                      
+                     
                     </div>
+                    
                     <div className={styles.moreoption}>
-                      <MoreHorizIcon />
+                    <NestedModal data={items} handleDelete={handleDelete} />
+                      {/* <ChildModal /> */}
+                      {/* <Button onClick={()=>handleDelete(items._id)} style={{height:"30px"}}>Delete </Button> <br /> */}
+
+
                     </div>
                   </div>
-                  <div className={styles.postdata}>{items.title}</div>
+                  <div className={styles.postdata}>{items.body}</div>
+                  {/* post */}
 
                   <Paper elevation={0} className={styles.postitems1}>
                     <div className={styles.icontext}>
@@ -315,11 +347,11 @@ const Postpage = () => {
                         onChange={handleChangecomment}
                         type="text"
                         name="title"
-                        value={block}
+                        value={comment}
                         placeholder="What's on your mind?"
                       />
                     </div>
-                    {block1 && (
+                    {commentblock && (
                       <div>
                         <button className={styles.postcomment}>Post</button>
                       </div>
