@@ -295,8 +295,7 @@ height: 40px;
 display: flex;
 gap :20px;
 margin-top: 10px;
-
-=======
+}
 .navbartext {
   margin-top: -8px;
 }
@@ -478,6 +477,7 @@ margin-top: 10px;
 .postdata {
   /* width: 300px; */
   border: 1px solid black;
+  height: auto;
 }
 
 .postitems1 {
@@ -495,6 +495,7 @@ margin-top: 10px;
 .postitems1icons {
   margin-top: 10px;
   color: #2d3436;
+ 
 }
 
 .icontext {

@@ -20,7 +20,8 @@ import MediaCard from "./FirstPost";
 import axios from "axios";
 import FirstPost from "./FirstPost";
 import { fontSize } from "@mui/system";
-import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
@@ -39,6 +40,7 @@ const Postpage = () => {
 
   const [comment, SetComment] = useState("");
   const [commentblock, SetcommentBlock] = useState(false);
+  const [background, setbackGround] = useState(true);
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,6 +57,8 @@ const Postpage = () => {
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
+
+
 
 
   useEffect(() => {
@@ -86,6 +90,13 @@ const Postpage = () => {
     SetComment(e.target.value);
     handle1();
   };
+
+  const handlelike=()=>{
+    setbackGround(!background)
+  }
+
+
+
 
   const postData = () => {
     const payload = {
@@ -122,11 +133,6 @@ const Postpage = () => {
   await   axios.delete(`http://localhost:8000/posts/${_id}`)
   getTodos()
 }
-
-
-
-
-
   return (
     <div>
       <div className={styles.middlemenubar}>
@@ -134,7 +140,7 @@ const Postpage = () => {
           <div className={styles.middlemenubar2}>
             <div className={styles.samecolor2}>
               <IconButton
-                style={{ border: "50%", background: "rgb(240,240,240)" }}
+                style={{border: "50%", background: "rgb(240,240,240)" }}
                 size="medium"
               >
                 <PersonIcon />
@@ -164,7 +170,8 @@ const Postpage = () => {
           </div>
 
           <Paper elevation={3} className={styles.postitems}>
-            <input
+            <input onChange={handleChange}
+
               type="file"
               id="id1"
               style={{ display: "none", visibility: "none" }}
@@ -179,13 +186,12 @@ const Postpage = () => {
 
             <div>
               <Button
-                // id="basic-button"
-                // aria-controls="basic-menu"
-                // aria-haspopup="true"
+
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
                 <EmojiEmotionsOutlinedIcon
+
                   className={styles.emojis1}
                   style={{
                     color: "#f6b83c",
@@ -206,7 +212,7 @@ const Postpage = () => {
                 <Box>
                   <div>
                     {chosenEmoji ? (
-                      <span>You chose: {chosenEmoji.emoji}</span>
+                      <span >You chose: {chosenEmoji.emoji}</span>
                     ) : (
                       <span>No emoji Chosen</span>
                     )}
@@ -286,12 +292,12 @@ const Postpage = () => {
                   {/* post */}
 
                   <Paper elevation={0} className={styles.postitems1}>
-                    <div className={styles.icontext}>
-                      <ThumbUpAltOutlinedIcon
-                        style={{ fontSize: "17px", marginLeft: "20px" }}
+                    <div onClick={handlelike} className={styles.icontext}>
+                      <ThumbUpIcon
+                        style={{ fontSize: "17px", marginLeft: "20px" ,color:background?"black":"#21cf7a" }}
                         className={styles.postitems1icons}
                       />
-                      <p>Like</p>
+                      <p style={{color:background?"black":"#21cf7a"}} >Like</p>
                     </div>
 
                     <div className={styles.icontext}>

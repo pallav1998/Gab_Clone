@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
 
-//       <Paper className={styles.navfixed} elevation={3}>
+{/* //       <Paper className={styles.navfixed} elevation={3}>
 //         <div className={styles.Container}>
 //           <div className={styles.logo}>
 //             <img
@@ -34,7 +34,7 @@ const Navbar = () => {
 //             <div className={styles.searchinput}>
 //               <input
 //                 type="text"
-//                 placeholder="Search for people or group on Gab"
+//                 placeholder="Search for people or group on Gab" */}
 
       <AppBar position="static">
         <Paper elevation={1}>
