@@ -162,7 +162,7 @@ const Navbar = () => {
         </Paper>
       </AppBar>
 
-      <LandingPage />
+      {/* <LandingPage /> */}
     </>
   );
 };
