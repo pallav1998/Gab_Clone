@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import styles from "../Navbar/navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
@@ -41,6 +41,11 @@ const Postpage = () => {
   const [comment, SetComment] = useState("");
   const [commentblock, SetcommentBlock] = useState(false);
   const [background, setbackGround] = useState(true);
+
+  const [query,setQuery] = useState("");
+  const inputRef = useRef();
+
+
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -85,11 +90,39 @@ const Postpage = () => {
     SetcommentBlock(false);
     }
   }
-
-  const handleChangecomment = (e) => {
+  
+  const handleonChange=(e)=>{
     SetComment(e.target.value);
     handle1();
-  };
+  }
+
+  // comment start
+
+  const handleAddComment = () => {
+    
+    if(query === ""){
+      return;
+    }
+
+  const payload = {
+    body:query,
+    post_id: "6158b6b200486270deca080d"
+  }
+
+  axios.patch(`http://localhost:8000/comments/${payload.post_id}`, payload).then(res => {
+    })
+    setQuery("");
+    console.log("milind")
+
+
+
+  }
+
+  //comment end
+
+
+  
+
 
   const handlelike=()=>{
     setbackGround(!background)
@@ -102,7 +135,7 @@ const Postpage = () => {
     const payload = {
       title:"aman",
       photo_url:"C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
-      user_id:"61587a562cf90b24831fd713",
+      user_id:"6158904021c57ac0a78b2892",
       body: block 
     };
 
@@ -129,10 +162,57 @@ const Postpage = () => {
   };
 
 
+
   const handleDelete =async(_id) => {
   await   axios.delete(`http://localhost:8000/posts/${_id}`)
   getTodos()
 }
+
+
+
+
+//file upload
+//upload image to cloudinary
+const [loading, setLoading] = useState(false);
+const [image, setImage] = useState("");
+
+const handleupload = async (e) => {
+  const files = e.target.files;
+  const data = new FormData();
+
+  data.append("file", files[0]);
+  data.append("upload_preset", "gab_clone");
+  setLoading(true);
+
+  const res = await fetch(
+    "https://api.cloudinary.com/v1_1/dlsirzrco/image/upload",
+    {
+      method: "Post",
+      body: data,
+    }
+  );
+
+  const file = await res.json();
+  console.log("file:", file);
+  setImage(file.secure_url)
+  setLoading(false)
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <div className={styles.middlemenubar}>
@@ -170,7 +250,9 @@ const Postpage = () => {
           </div>
 
           <Paper elevation={3} className={styles.postitems}>
-            <input onChange={handleChange}
+            <input
+             onChange={handleChange}
+            onChange={handleupload}
 
               type="file"
               id="id1"
@@ -273,11 +355,18 @@ const Postpage = () => {
                         <PersonIcon style={{ fontSize: "36px" }} />
                       </IconButton>
                     </div>
+                    
                     <div className={styles.profilename}>
                       
                       <p>{`${items.user_id?.first_name}`}</p>
                       
-                     
+                      <div className={styles.postdata}>{items.body}</div>
+
+<div>
+<img style={{width:"300px"}} src={image} alt="" />
+
+</div>
+                    
                     </div>
                     
                     <div className={styles.moreoption}>
@@ -288,7 +377,6 @@ const Postpage = () => {
 
                     </div>
                   </div>
-                  <div className={styles.postdata}>{items.body}</div>
                   {/* post */}
 
                   <Paper elevation={0} className={styles.postitems1}>
@@ -350,7 +438,9 @@ const Postpage = () => {
                     <div className={styles.commentinputdiv}>
                       <input
                         className={styles.commentinput}
-                        onChange={handleChangecomment}
+                        // onChange={handleChangecomment}
+                        onChange={handleonChange}
+                        inputRef={inputRef} query={query} setQuery={setQuery}
                         type="text"
                         name="title"
                         value={comment}
@@ -359,7 +449,7 @@ const Postpage = () => {
                     </div>
                     {commentblock && (
                       <div>
-                        <button className={styles.postcomment}>Post</button>
+                        <button onClick={handleAddComment}  className={styles.postcomment}>Post</button>
                       </div>
                     )}
                   </div>

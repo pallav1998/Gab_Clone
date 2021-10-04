@@ -85,7 +85,7 @@
 
 
 .leftmenubar,.middlemenubar,.lastmenubar{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 20px;
 
 }
@@ -175,7 +175,7 @@
 .iconsupdated{
     width: 150px;
     height: 40px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .fileinput
 {
@@ -218,7 +218,7 @@
     margin-top: 20px;
 }
 .postupload{
-    display: flex;
+    display: grid;
     width: 100%;
     
 
@@ -231,6 +231,9 @@
 
 }
 .profilename{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
     margin-top: 5px;
     font-size: 15px;
     font-weight: 500;
@@ -240,14 +243,15 @@
 
 }
 .moreoption{
-    margin-left: 400px;
+    margin-left: 200px;
     margin-top:10px;
     color: gray;
 }
 
 .postdata{
     /* width: 300px; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    /* margin-right:100px ; */
 
 }
 
@@ -327,7 +331,7 @@ margin-top: 10px;
 .leftmenubar,
 .middlemenubar,
 .lastmenubar {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-top: 20px;
 }
 .container2child1 {
@@ -415,7 +419,7 @@ margin-top: 10px;
 .iconsupdated {
   width: 150px;
   height: 40px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .fileinput {
   cursor: pointer;
@@ -476,8 +480,9 @@ margin-top: 10px;
 
 .postdata {
   /* width: 300px; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: auto;
+  margin-right: 20px;
 }
 
 .postitems1 {
