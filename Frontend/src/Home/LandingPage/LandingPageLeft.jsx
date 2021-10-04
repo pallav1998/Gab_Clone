@@ -22,9 +22,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ViewListTwoToneIcon from "@mui/icons-material/ViewListTwoTone";
 
 import Postpage from "./Postpage";
+import Navbar from "../Navbar/Navbar";
 
 const LandingPage = () => {
   return (
+    <>
+    <Navbar/>
     <div>
       <div className={styles.container2}>
         <div className={styles.leftmenubar}>
@@ -175,6 +178,8 @@ const LandingPage = () => {
         <div className={styles.lastmenubar}></div>
       </div>
     </div>
+  
+  </>
   );
 };
 
