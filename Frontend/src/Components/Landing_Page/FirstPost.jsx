@@ -1,7 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import styles from "../LandingPage/Firstpost.module.css";
+import styles from "./Firstpost.module.css";
 import CreateIcon from "@mui/icons-material/Create";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 export default function FirstPost() {

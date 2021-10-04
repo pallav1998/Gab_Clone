@@ -14,7 +14,7 @@ import AppBar from "@mui/material/AppBar";
 
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
-import LandingPage from "../LandingPage/LandingPageLeft";
+// import LandingPage from "../LandingPage/LandingPageLeft";
 
 const Navbar = () => {
   return (

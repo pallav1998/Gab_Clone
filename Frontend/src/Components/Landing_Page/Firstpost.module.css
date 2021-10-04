@@ -1,0 +1,20 @@
+.cardparent {
+  display: flex;
+  gap: 15px;
+}
+.card1 {
+  margin: auto;
+
+  width: 30%;
+  height: 190px;
+}
+
+.loadcard1 {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px dashed #d5dce0;
+  margin-top: 30px;
+  margin-left: 45px;
+  color: gainsboro;
+}
