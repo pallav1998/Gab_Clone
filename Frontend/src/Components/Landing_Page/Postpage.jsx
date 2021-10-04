@@ -123,7 +123,7 @@ const Postpage = () => {
     };
 
     axios
-      .post("http://localhost:3500/posts", payload)
+      .post("http://localhost:8000/posts", payload)
       .then(() => {
         getTodos();
       })
@@ -136,7 +136,7 @@ const Postpage = () => {
 
   const getTodos = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3500/posts");
+      const { data } = await axios.get("http://localhost:8000/posts");
       console.log("user=", data.posts);
       setList(data.posts);
     } catch (err) {
@@ -145,7 +145,7 @@ const Postpage = () => {
   };
 
   const handleDelete = async (_id) => {
-    await axios.delete(`http://localhost:3500/posts/${_id}`);
+    await axios.delete(`http://localhost:8000/posts/${_id}`);
     getTodos();
   };
 
