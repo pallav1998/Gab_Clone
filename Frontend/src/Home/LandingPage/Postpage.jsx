@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import styles from "../Navbar/navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
@@ -20,7 +20,8 @@ import MediaCard from "./FirstPost";
 import axios from "axios";
 import FirstPost from "./FirstPost";
 import { fontSize } from "@mui/system";
-import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
@@ -39,6 +40,12 @@ const Postpage = () => {
 
   const [comment, SetComment] = useState("");
   const [commentblock, SetcommentBlock] = useState(false);
+  const [background, setbackGround] = useState(true);
+
+  const [query,setQuery] = useState("");
+  const inputRef = useRef();
+
+
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,6 +62,8 @@ const Postpage = () => {
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
+
+
 
 
   useEffect(() => {
@@ -81,17 +90,52 @@ const Postpage = () => {
     SetcommentBlock(false);
     }
   }
-
-  const handleChangecomment = (e) => {
+  
+  const handleonChange=(e)=>{
     SetComment(e.target.value);
     handle1();
-  };
+  }
+
+  // comment start
+
+  const handleAddComment = () => {
+    
+    if(query === ""){
+      return;
+    }
+
+  const payload = {
+    body:query,
+    post_id: "6158b6b200486270deca080d"
+  }
+
+  axios.patch(`http://localhost:8000/comments/${payload.post_id}`, payload).then(res => {
+    })
+    setQuery("");
+    console.log("milind")
+
+
+
+  }
+
+  //comment end
+
+
+  
+
+
+  const handlelike=()=>{
+    setbackGround(!background)
+  }
+
+
+
 
   const postData = () => {
     const payload = {
       title:"aman",
       photo_url:"C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
-      user_id:"61587a562cf90b24831fd713",
+      user_id:"6158904021c57ac0a78b2892",
       body: block 
     };
 
@@ -118,10 +162,52 @@ const Postpage = () => {
   };
 
 
+
   const handleDelete =async(_id) => {
   await   axios.delete(`http://localhost:8000/posts/${_id}`)
   getTodos()
 }
+
+
+
+
+//file upload
+//upload image to cloudinary
+const [loading, setLoading] = useState(false);
+const [image, setImage] = useState("");
+
+const handleupload = async (e) => {
+  const files = e.target.files;
+  const data = new FormData();
+
+  data.append("file", files[0]);
+  data.append("upload_preset", "gab_clone");
+  setLoading(true);
+
+  const res = await fetch(
+    "https://api.cloudinary.com/v1_1/dlsirzrco/image/upload",
+    {
+      method: "Post",
+      body: data,
+    }
+  );
+
+  const file = await res.json();
+  console.log("file:", file);
+  setImage(file.secure_url)
+  setLoading(false)
+
+};
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -134,7 +220,7 @@ const Postpage = () => {
           <div className={styles.middlemenubar2}>
             <div className={styles.samecolor2}>
               <IconButton
-                style={{ border: "50%", background: "rgb(240,240,240)" }}
+                style={{border: "50%", background: "rgb(240,240,240)" }}
                 size="medium"
               >
                 <PersonIcon />
@@ -165,6 +251,9 @@ const Postpage = () => {
 
           <Paper elevation={3} className={styles.postitems}>
             <input
+             onChange={handleChange}
+            onChange={handleupload}
+
               type="file"
               id="id1"
               style={{ display: "none", visibility: "none" }}
@@ -179,13 +268,12 @@ const Postpage = () => {
 
             <div>
               <Button
-                // id="basic-button"
-                // aria-controls="basic-menu"
-                // aria-haspopup="true"
+
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
                 <EmojiEmotionsOutlinedIcon
+
                   className={styles.emojis1}
                   style={{
                     color: "#f6b83c",
@@ -206,7 +294,7 @@ const Postpage = () => {
                 <Box>
                   <div>
                     {chosenEmoji ? (
-                      <span>You chose: {chosenEmoji.emoji}</span>
+                      <span >You chose: {chosenEmoji.emoji}</span>
                     ) : (
                       <span>No emoji Chosen</span>
                     )}
@@ -267,11 +355,18 @@ const Postpage = () => {
                         <PersonIcon style={{ fontSize: "36px" }} />
                       </IconButton>
                     </div>
+                    
                     <div className={styles.profilename}>
                       
                       <p>{`${items.user_id?.first_name}`}</p>
                       
-                     
+                      <div className={styles.postdata}>{items.body}</div>
+
+<div>
+<img style={{width:"300px"}} src={image} alt="" />
+
+</div>
+                    
                     </div>
                     
                     <div className={styles.moreoption}>
@@ -282,16 +377,15 @@ const Postpage = () => {
 
                     </div>
                   </div>
-                  <div className={styles.postdata}>{items.body}</div>
                   {/* post */}
 
                   <Paper elevation={0} className={styles.postitems1}>
-                    <div className={styles.icontext}>
-                      <ThumbUpAltOutlinedIcon
-                        style={{ fontSize: "17px", marginLeft: "20px" }}
+                    <div onClick={handlelike} className={styles.icontext}>
+                      <ThumbUpIcon
+                        style={{ fontSize: "17px", marginLeft: "20px" ,color:background?"black":"#21cf7a" }}
                         className={styles.postitems1icons}
                       />
-                      <p>Like</p>
+                      <p style={{color:background?"black":"#21cf7a"}} >Like</p>
                     </div>
 
                     <div className={styles.icontext}>
@@ -344,7 +438,9 @@ const Postpage = () => {
                     <div className={styles.commentinputdiv}>
                       <input
                         className={styles.commentinput}
-                        onChange={handleChangecomment}
+                        // onChange={handleChangecomment}
+                        onChange={handleonChange}
+                        inputRef={inputRef} query={query} setQuery={setQuery}
                         type="text"
                         name="title"
                         value={comment}
@@ -353,7 +449,7 @@ const Postpage = () => {
                     </div>
                     {commentblock && (
                       <div>
-                        <button className={styles.postcomment}>Post</button>
+                        <button onClick={handleAddComment}  className={styles.postcomment}>Post</button>
                       </div>
                     )}
                   </div>

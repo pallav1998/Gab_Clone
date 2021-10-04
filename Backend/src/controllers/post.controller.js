@@ -6,19 +6,19 @@ const upload = require("../utlis/fileUploads");
 const router = express.Router();
 
 //uploads file
-router.post("/", upload.any("userImage"), async (req, res) => {
-  // console.log(req.file);
-  const files = req.files.map((file) => file.path);
+// router.post("/", upload.any("userImage"), async (req, res) => {
+//   // console.log(req.file);
+//   const files = req.files.map((file) => file.path);
 
-  const user = await Post.create({
-    photo_url: files,
-    title: req.body.title,
-    body: req.body.body,
-    user_id: req.body.user_id,
-  });
+//   const user = await Post.create({
+//     photo_url: files,
+//     title: req.body.title,
+//     body: req.body.body,
+//     user_id: req.body.user_id,
+//   });
 
-  return res.status(201).json({ data: user });
-});
+//   return res.status(201).json({ data: user });
+// });
 
 //create post
 router.post("/", CRUDController.post(Post));
@@ -26,9 +26,7 @@ router.post("/", CRUDController.post(Post));
 //get all the post
 router.get("/", async (req, res) => {
   try {
-
     const posts = await Post.find().populate("user_id").lean().exec(); // lean is convert object to json data and find is not returning the proper promis so to convert it to proper promise we use exec()
-
     res.status(200).send({ posts });
   } catch (err) {
     res.status(400).json({ status: "error in get", message: err.message });

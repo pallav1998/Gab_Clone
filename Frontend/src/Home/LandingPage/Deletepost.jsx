@@ -70,7 +70,7 @@ export  function NestedModal({handleDelete,handleEdit,data}) {
   };
 
   return (
-    <div style={{}}>
+    <div style={{style}}>
       <Button style={{color:"gray"}} onClick={handleOpen}> <MoreHorizIcon /></Button>
       <Modal
         open={open}
