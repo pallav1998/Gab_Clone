@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import axios from "axios";
 import "./Signup.css";
 
 const Signup = () => {
@@ -17,22 +18,14 @@ const Signup = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault();
     const { user_name, email, password, confirm_password } = user;
 
-    const res = await fetch("/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_name,
-        email,
-        password,
-        confirm_password,
-      }),
-    });
-    const data = await res.json();
+    const payload = { user_name, email, password, confirm_password };
+
+    const data = axios.post("/users", payload);
+
     if (data.status === 422 || !data) {
       alert("invalid data");
     } else {
@@ -70,13 +63,13 @@ const Signup = () => {
           <input
             type="text"
             name="email"
-            placeholder="Enter your Email"
+            placeholder="Enter your email"
             value={email}
             onChange={handle}
           />
           <br />
           <br />
-          <label>Password*</label> <br />
+          <label>password*</label> <br />
           <input
             type="password"
             name="password"
@@ -102,7 +95,7 @@ const Signup = () => {
           </button>
           <hr style={{ "margin-top": "30px" }} />
           <label>
-            <Link to="/login">Login</Link>{" "}
+            <Link to="/login">Login</Link>
           </label>
         </form>
       </div>

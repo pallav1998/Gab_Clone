@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./profile.css";
 export const Profile = () => {
-  const [userData, setUserData] = useState();
-
+  const [userData, setUserData] = useState({});
   const history = useHistory();
   const callProfilePage = async () => {
     try {
@@ -17,6 +16,7 @@ export const Profile = () => {
       });
       const data = await res.json();
       console.log(data);
+
       setUserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
@@ -29,6 +29,7 @@ export const Profile = () => {
   };
   useEffect(() => {
     callProfilePage();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -44,7 +45,7 @@ export const Profile = () => {
             />
           </div>
           <div>
-            <h2>Noor</h2>
+            <h2>NOOR</h2>
             <p>noormuhammed</p>
           </div>
         </div>
@@ -97,8 +98,8 @@ export const Profile = () => {
                 />
               </div>
               <div style={{ display: "flex" }}>
-                <h2>Noor</h2>
-                <p>@noormuhammed</p>
+                <h2>{userData.user_name}</h2>
+                <p>@{userData.empty?.nested}</p>
               </div>
             </div>
 
@@ -125,6 +126,7 @@ export const Profile = () => {
               </button>
             </div>
           </div>
+          {}
         </div>
       </div>
     </div>

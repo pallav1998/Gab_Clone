@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../Navbar/navbar.module.css";
+import styles from "./Postpage.module.css";
 import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
-// import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Paper from "@mui/material/Paper";
 
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import ZoomOutMapRoundedIcon from "@mui/icons-material/ZoomOutMapRounded";
 import Divider from "@mui/material/Divider";
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
-import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
 import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 
@@ -43,6 +41,10 @@ const Postpage = () => {
   const [query, setQuery] = useState("");
   const inputRef = useRef();
 
+  useEffect(() => {
+    getTodos();
+  }, []);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -57,10 +59,6 @@ const Postpage = () => {
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
-
-  useEffect(() => {
-    getTodos();
-  }, []);
 
   const handle = () => {
     if (block.length > 0) {
@@ -90,22 +88,7 @@ const Postpage = () => {
 
   // comment start
 
-  const handleAddComment = () => {
-    if (query === "") {
-      return;
-    }
-
-    const payload = {
-      body: query,
-      post_id: "6158b6b200486270deca080d",
-    };
-
-    axios
-      .patch(`http://localhost:8000/comments/${payload.post_id}`, payload)
-      .then((res) => {});
-    setQuery("");
-    console.log("milind");
-  };
+  const handleAddComment = () => {};
 
   //comment end
 
@@ -113,12 +96,14 @@ const Postpage = () => {
     setbackGround(!background);
   };
 
+  //post
+
   const postData = () => {
     const payload = {
       title: "aman",
       photo_url:
         "C:\\Users\\MILIND\\OneDrive\\Desktop\\Gab_Clone\\backend\\src\\uploads\\1633114472515-Codecov.png",
-      user_id: "6158904021c57ac0a78b2892",
+      user_id: "615a89b83c2f1190808ea19f",
       body: block,
     };
 
@@ -133,6 +118,8 @@ const Postpage = () => {
 
     SetBlock("");
   };
+
+  //get
 
   const getTodos = async () => {
     try {
@@ -149,9 +136,9 @@ const Postpage = () => {
     getTodos();
   };
 
+  //file upload
   //upload image to cloudinary
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [image, setImage] = useState("");
 
   const handleupload = async (e) => {
@@ -233,13 +220,14 @@ const Postpage = () => {
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
-                <EmojiEmotionsOutlinedIcon
+                {/* <EmojiEmotionsOutlinedIcon
+
                   className={styles.emojis1}
                   style={{
                     color: "#f6b83c",
                     marginTop: "4px",
                   }}
-                />
+                /> */}
               </Button>
 
               <Menu
@@ -297,7 +285,7 @@ const Postpage = () => {
 
           {list &&
             list.map((items) => {
-              console.log(list);
+              // console.log(list)
               return (
                 <>
                   <Paper className={styles.postuploadparent} elevation={1}>
@@ -315,7 +303,7 @@ const Postpage = () => {
                       </div>
 
                       <div className={styles.profilename}>
-                        <p>{`${items.user_id?.user_name}`}</p>
+                        <p>{`${items.user_id?.first_name}`}</p>
 
                         <div className={styles.postdata}>{items.body}</div>
 
