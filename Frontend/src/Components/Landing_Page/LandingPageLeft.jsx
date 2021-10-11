@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Navbar/navbar.module.css";
+import styles from "./LandingPageLeft.module.css";
 
 import Typography from "@mui/material/Typography";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -22,12 +22,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ViewListTwoToneIcon from "@mui/icons-material/ViewListTwoTone";
 
 import Postpage from "./Postpage";
-import Navbar from "../Navbar/Navbar";
 
 const LandingPage = () => {
   return (
     <>
-      <Navbar />
       <div>
         <div className={styles.container2}>
           <div className={styles.leftmenubar}>

@@ -1,20 +1,30 @@
 .cardparent {
-  display: flex;
-  gap: 15px;
-}
-.card1 {
-  margin: auto;
-
-  width: 30%;
-  height: 190px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px;
+  gap: 10px;
 }
 
-.loadcard1 {
+.loadcard {
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  border: 1px dashed #d5dce0;
-  margin-top: 30px;
-  margin-left: 45px;
+  border: 2px dashed #1083c5;
+  align-items: center;
+  margin: auto;
+  margin-top: 25px;
   color: gainsboro;
+}
+
+.loadcard > svg {
+  color: black;
+  font-size: 22px;
+  margin: 30% 40%;
+}
+
+.card > div > h6 {
+  font-size: 18px;
+  color: #2d3436;
+  font-weight: 550;
+  text-align: center;
 }

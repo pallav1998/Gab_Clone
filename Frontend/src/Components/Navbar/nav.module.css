@@ -1,0 +1,142 @@
+.Container {
+  display: flex;
+  width: 90%;
+  height: 51px;
+  /* border: 1px solid black ; */
+  margin: auto;
+  position: static;
+}
+.logo {
+  height: 50px;
+  width: 10;
+  /* margin-top: -7px; */
+  margin-right: 20px;
+}
+.search {
+  display: flex;
+  width: 500px;
+  margin-left: 20px;
+  /* margin-top: 10px; */
+  /* border: 1px solid black ; */
+}
+.search > .searchinput {
+  width: 300px;
+  height: 35px;
+  /* border: 1px solid black; */
+  margin-top: 6px;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  /* #e2e8ec */
+}
+.searchinput > input {
+  width: 210px;
+  height: 30px;
+  /* border: none; */
+  outline: none;
+
+  background-color: #f0f2f5;
+
+  /* margin-right: 70px; */
+}
+
+.searchinput > input {
+  border: none;
+}
+
+.icons {
+  display: flex;
+  /* margin-top: 10px; */
+  height: 50px;
+  gap: 22px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 12px;
+  /* width: 600px;
+      border: 1px solid black; */
+}
+.navbartext {
+  margin-top: -8px;
+}
+
+.samecolor {
+  /* font-size: 20px; */
+  color: gray;
+  margin-top: 10px;
+}
+
+.samecolor1 {
+  color: gray;
+  margin-top: 5px;
+}
+
+.circleshadow {
+  color: rgb(240, 240, 240);
+  margin-top: 5px;
+}
+
+.iconsupdated {
+  width: 150px;
+  height: 40px;
+  border: 1px solid black;
+}
+/* .fileinput {
+  cursor: pointer;
+  display: none;
+  visibility: none;
+  width: 200px;
+  margin-top: 5px;
+  z-index: 5px;
+  border: none;
+  background-color: white;
+} */
+
+/* .iconsinputinsert {
+  color: #63da9d;
+  font-size: 25px;
+  margin-left: 5px;
+  position: absolute;
+} */
+
+/* .button1 {
+  width: 100px;
+  height: 40px;
+  padding: 10px 0;
+  margin: 5px 20px 10px 0;
+  cursor: pointer;
+  border: 1px solid #21cf7a;
+  color: #21cf7a;
+  background-color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.button1:hover {
+  background-color: #21cf7a;
+  color: white;
+} */
+
+.button2 {
+  width: 100px;
+  height: 40px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin: 5px 20px 10px 0;
+  cursor: pointer;
+  border: 1px solid #21cf7a;
+  background-color: #21cf7a;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.button2 > span > svg {
+  font-size: 30px;
+  margin-top: -5px;
+}
+
+.button2:hover {
+  background-color: #378e61;
+  color: white;
+}

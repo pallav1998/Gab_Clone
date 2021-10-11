@@ -3,9 +3,8 @@ import "./Signup.css";
 import { useHistory, Link } from "react-router-dom";
 import { userContext } from "../../App";
 
-
 const Login = () => {
-  const { state, dispatch } = useContext(userContext);
+  const { dispatch } = useContext(userContext);
   const history = useHistory();
   const [user, setuser] = React.useState({
     email: "",
@@ -29,11 +28,11 @@ const Login = () => {
     });
     const data = res.json();
     if (res.status === 400 || !data) {
-      window.alert("invalid");
+      window.alert("Please enter your correct email and password");
     } else {
       dispatch({ type: "USER", payload: true });
       window.alert("Login success");
-      history.push("/profile");
+      history.push("/landing");
     }
   };
   return (
