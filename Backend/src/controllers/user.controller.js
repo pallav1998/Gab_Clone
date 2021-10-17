@@ -5,25 +5,25 @@ const upload = require("../Utlis/fileUploads");
 const CRUDController = require("./CRUD.controller");
 
 //uploads file
-router.post("/", upload.any("userImage"), async (req, res) => {
-  // console.log(req.file);
-  const files = req.files.map((file) => file.path);
+// router.post("/", upload.any("userImage"), async (req, res) => {
+//   // console.log(req.file);
+//   const files = req.files.map((file) => file.path);
 
-  const user = await User.create({
-    user_name: req.body.user_name,
-    // first_name: req.body.first_name,
-    // last_name: req.body.last_name,
-    password: req.body.password,
-    confirm_password: req.body.password,
-    gender: req.body.gender,
-    email: req.body.email,
-    age: req.body.age,
-    // tokens: req.body.tokens,
-    photo_url: files,
-  });
+//   const user = await User.create({
+//     user_name: req.body.user_name,
+//     // first_name: req.body.first_name,
+//     // last_name: req.body.last_name,
+//     password: req.body.password,
+//     confirm_password: req.body.password,
+//     gender: req.body.gender,
+//     email: req.body.email,
+//     age: req.body.age,
+//     // tokens: req.body.tokens,
+//     photo_url: files,
+//   });
 
-  return res.status(201).json({ data: user });
-});
+//   return res.status(201).json({ data: user });
+// });
 
 router.post("/", async (req, res) => {
   const { user_name, email, password, confirm_password } = req.body;
