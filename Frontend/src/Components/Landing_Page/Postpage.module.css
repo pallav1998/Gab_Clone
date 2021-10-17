@@ -108,6 +108,12 @@
 .postdata {
   /* width: 300px; */
   border: 1px solid black;
+  height: auto;
+  margin-right: 20px;
+  font-size: 15px;
+}
+.postdata > p {
+  font-size: 20px;
 }
 .moreoption {
   margin-left: 400px;
@@ -180,4 +186,12 @@
 }
 .postcomment:hover {
   background-color: #378e61;
+}
+
+.postandimg {
+  /* display: flex; */
+  width: 70%;
+  height: auto;
+  /* border: 1px solid black; */
+  margin: auto;
 }

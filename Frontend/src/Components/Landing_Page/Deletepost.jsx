@@ -37,8 +37,7 @@ export default function ChildModal() {
   return (
     <React.Fragment>
       <Button onClick={handleOpen} style={{ height: "30px" }}>
-        {" "}
-        <IosShareIcon style={{ color: "#2d3436", fontSize: "15px" }} />{" "}
+        <IosShareIcon style={{ color: "#2d3436", fontSize: "15px" }} />
         <p
           style={{
             margin: "5px",
@@ -47,10 +46,9 @@ export default function ChildModal() {
             color: "black",
           }}
         >
-          {" "}
           Share
-        </p>{" "}
-      </Button>{" "}
+        </p>
+      </Button>
       <br />
       <Modal
         hideBackdrop
@@ -83,7 +81,6 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
   return (
     <div style={{ style }}>
       <Button style={{ color: "gray" }} onClick={handleOpen}>
-        {" "}
         <MoreHorizIcon />
       </Button>
       <Modal open={open} onClose={handleClose}>
@@ -91,10 +88,7 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
           {/* <h2 id="parent-modal-title">Text in a modal</h2> */}
           <div style={{ display: "flex", color: "#2d3436" }}>
             <Button style={{ width: "200px", height: "30px" }}>
-              {" "}
-              <BookmarkIcon
-                style={{ color: "#2d3436", fontSize: "15px" }}
-              />{" "}
+              <BookmarkIcon style={{ color: "#2d3436", fontSize: "15px" }} />
               <p
                 style={{
                   margin: "5px",
@@ -104,13 +98,12 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
                 }}
               >
                 Bookmark status
-              </p>{" "}
+              </p>
             </Button>
             <KeyboardArrowRightIcon />
           </div>
           <Button style={{ height: "30px" }}>
-            {" "}
-            <PushPinIcon style={{ color: "#2d3436", fontSize: "15px" }} />{" "}
+            <PushPinIcon style={{ color: "#2d3436", fontSize: "15px" }} />
             <p
               style={{
                 margin: "5px",
@@ -120,14 +113,13 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
               }}
             >
               Pin on Profile
-            </p>{" "}
+            </p>
           </Button>
           <Button
             onClick={() => handleDelete(data._id)}
             style={{ height: "30px" }}
           >
-            {" "}
-            <DeleteIcon style={{ color: "#2d3436", fontSize: "15px" }} />{" "}
+            <DeleteIcon style={{ color: "#2d3436", fontSize: "15px" }} />
             <p
               style={{
                 margin: "5px",
@@ -137,15 +129,14 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
               }}
             >
               Delete
-            </p>{" "}
-          </Button>{" "}
+            </p>
+          </Button>
           <br />
           <Button
             onClick={() => handleEdit(data._id)}
             style={{ height: "30px" }}
           >
-            {" "}
-            <ModeEditIcon style={{ color: "#2d3436", fontSize: "15px" }} />{" "}
+            <ModeEditIcon style={{ color: "#2d3436", fontSize: "15px" }} />
             <p
               style={{
                 margin: "5px",
@@ -155,7 +146,7 @@ export function NestedModal({ handleDelete, handleEdit, data }) {
               }}
             >
               Edit
-            </p>{" "}
+            </p>
           </Button>
           <br />
           <ChildModal />

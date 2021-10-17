@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./profile.css";
+
 export const Profile = () => {
   const [userData, setUserData] = useState({});
   const history = useHistory();
@@ -29,7 +30,7 @@ export const Profile = () => {
   };
   useEffect(() => {
     callProfilePage();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -37,7 +38,6 @@ export const Profile = () => {
       <div className="user">
         <div className="name">
           <div>
-            {" "}
             <img
               src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"
               alt="loading"
@@ -45,8 +45,7 @@ export const Profile = () => {
             />
           </div>
           <div>
-            <h2>NOOR</h2>
-            <p>noormuhammed</p>
+            <h2>{userData.user_name}</h2>
           </div>
         </div>
         <div className="details">
@@ -90,7 +89,6 @@ export const Profile = () => {
           <div className="post">
             <div className="name2">
               <div>
-                {" "}
                 <img
                   src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"
                   alt="loading"

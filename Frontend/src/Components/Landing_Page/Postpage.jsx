@@ -33,6 +33,7 @@ const Postpage = () => {
   const [block, SetBlock] = useState("");
   const [block1, SetBlock1] = useState(false);
   const [list, setList] = useState([]);
+  const [userData, setUserData] = useState({});
 
   const [comment, SetComment] = useState("");
   const [commentblock, SetcommentBlock] = useState(false);
@@ -131,6 +132,34 @@ const Postpage = () => {
     }
   };
 
+  //user display
+  const callProfilePage = async () => {
+    try {
+      const res = await fetch("/profile", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      console.log(data);
+
+      setUserData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.log(err, "error");
+    }
+  };
+  useEffect(() => {
+    callProfilePage();
+  }, []);
+
+  //delete
   const handleDelete = async (_id) => {
     await axios.delete(`http://localhost:8000/posts/${_id}`);
     getTodos();
@@ -303,19 +332,24 @@ const Postpage = () => {
                       </div>
 
                       <div className={styles.profilename}>
-                        <p>{`${items.user_id?.first_name}`}</p>
-
-                        <div className={styles.postdata}>{items.body}</div>
-
-                        <div>
-                          <img style={{ width: "300px" }} src={image} alt="" />
+                        <p>{userData.user_name}</p>
+                        <div />
+                        <div className={styles.moreoption}>
+                          <NestedModal
+                            data={items}
+                            handleDelete={handleDelete}
+                          />
                         </div>
                       </div>
+                    </div>
 
-                      <div className={styles.moreoption}>
-                        <NestedModal data={items} handleDelete={handleDelete} />
-                        {/* <ChildModal /> */}
-                        {/* <Button onClick={()=>handleDelete(items._id)} style={{height:"30px"}}>Delete </Button> <br /> */}
+                    <div className={styles.postandimg}>
+                      <div className={styles.postdata}>
+                        <p>{items.body}</p>
+                      </div>
+
+                      <div>
+                        <img style={{ width: "300px" }} src={image} alt="" />
                       </div>
                     </div>
                     {/* post */}

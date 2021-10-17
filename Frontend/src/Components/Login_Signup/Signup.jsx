@@ -19,14 +19,11 @@ const Signup = () => {
   };
 
   const submit = async (e) => {
-    e.preventDefault();
-    const { user_name, email, password, confirm_password } = user;
-
     const payload = { user_name, email, password, confirm_password };
 
     const data = axios.post("/users", payload);
 
-    if (data.status === 422 || !data) {
+    if (data.status === 400 || !data) {
       alert("invalid data");
     } else {
       alert("Success");
@@ -89,7 +86,6 @@ const Signup = () => {
           />
           <br />
           <br />
-          <label>Username*</label> <br />
           <button type="submit" onClick={submit}>
             submit
           </button>
